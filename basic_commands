@@ -7,12 +7,35 @@ SETUP
 // See Version
 $docker -version
 
+HELP
+-----
 
+SEARCH
+----
+
+IMAGES...
+//List all docker images in the machine
+$ docker images
+
+Serach for docker images in machine
+$ docker images | grep mysql
+
+
+CONTAINERS.....
+//search image in the docker hub, not local
+$ docker search mysql
+
+//list containers
+$ docker ps -all 
+
+//show active image onlye
+$ docker ps
 
 
 ADD
 ----
-
+//to pull image in the local machine, pulling won't run container or instanc of image
+$docker pull mysql
 
 
 UPDATE
