@@ -1,0 +1,24 @@
+SETTING ALIAS
+-----
+#alias docker "d"
+
+SETUP
+----
+// See Version
+$docker -version
+
+
+
+
+ADD
+----
+
+
+
+UPDATE
+----
+
+
+
+DELETE
+------
