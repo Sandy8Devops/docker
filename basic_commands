@@ -14,16 +14,18 @@ SEARCH
 ----
 
 IMAGES...
+
+//search image in the docker hub, not local
+$ docker search mysql
 //List all docker images in the machine
 $ docker images
 
 Serach for docker images in machine
+
 $ docker images | grep mysql
 
 
 CONTAINERS.....
-//search image in the docker hub, not local
-$ docker search mysql
 
 //list containers
 $ docker ps -all 
@@ -37,6 +39,36 @@ ADD
 //to pull image in the local machine, pulling won't run container or instanc of image
 $docker pull mysql
 
+RUN
+----
+run = images->container
+exec = container
+
+//This will run the docker images as a container 
+$ docker run nginx  //runs with default name, mode, 
+
+//run docker with custom nae name, if verion
+$ docker run --name sandy_nginx nginx
+
+//runs docker with custom name, in a deattached (background process) and opens bash script in the cotainer
+$docker run --name docker-nginx -d -it nginx /bin/bash
+
+//Get into docker teminal
+//names or container id is ok
+$docker run -it nginx /bin/bash.  
+
+//Run bash script in already running container
+$docker exec nginx ls
+
+//Run and Expose app in port
+//docker run -p [host-local-machine-port]:[container-port]
+$docker run -p 8080:80
+after this : localhost:8080/ will access the page
+
+//To see the container hosts
+$docker ps.  // PORTS will be 80/tcp like so
+
+
 
 UPDATE
 ----
@@ -45,3 +77,7 @@ UPDATE
 
 DELETE
 ------
+IMAGES...
+$docker rmi image_ID
+
+
