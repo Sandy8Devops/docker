@@ -20,8 +20,10 @@ $ docker search mysql
 //List all docker images in the machine
 $ docker images
 
-Serach for docker images in machine
+//Sort docker images with size in ascending order
+$docker images --format "{{.ID}}\t{{.Size}}\t{{.Repository}}" | sort -k 2 -h -r
 
+Serach for docker images in machine
 $ docker images | grep mysql
 
 
@@ -78,6 +80,24 @@ UPDATE
 DELETE
 ------
 IMAGES...
-$docker rmi image_ID
+  $docker rmi image_ID
+
+  
+CONTAINERS....
+// will remove stopped containers, network not used by any containers, dangling image, dangling build cache and free some space
+  $docker system prune  
+// Dangling= image not tagged by user
+// Unused = images not used in any conatainers
+  
+  //Remove all containers and Images 
+  $docker system prune -a //remove all images
+
+see Dangling Images
+$docker images -f dangling=true
+
+CAUSION
+Remove containers and then images in Test env, Prod not recommended
+$docker rm -vf $(docker ps -aq) //remove all containers
+$docker rmi -f $(docker images -aq) //remove all images
 
 
